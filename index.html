@@ -94,14 +94,25 @@
     
     .hero-photo {
       float: right;
-      width: 200px;
-      height: 230px;
+      width: 210px;
+      height: 240px;
       object-fit: cover;
       object-position: center top;
       display: block;
       border: 1px solid var(--border);
-      margin: 0 0 1.5rem 3rem;
+      margin: 0.4rem 0 1.5rem 3rem;
       shape-outside: border-box;
+    }
+    
+    @media (max-width: 640px) {
+      #hero { padding: 2rem 0 3rem; }
+      .hero-photo {
+        float: none;
+        display: block;
+        width: 130px;
+        height: 150px;
+        margin: 0 0 1.2rem 0;
+      }
     }
     
     .hero-bio {
@@ -137,17 +148,7 @@
       border-color: var(--accent);
       background: #f0f6e8;
     }
-    
-    @media (max-width: 640px) {
-      #hero { padding: 2rem 0 3rem; }
-      .hero-photo {
-        float: none;
-        display: block;
-        width: 140px;
-        height: 160px;
-        margin: 1.2rem 0 1.5rem 0;
-      }
-    }
+  
 
     /* ══════════════════ RESEARCH TAGS ══════════════════ */
     .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.45rem; }
@@ -317,22 +318,22 @@
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="container">
-      <div>
+    <img class="hero-photo" src="Oge_Marques.png" alt="Oge Marques" />
+      
         <h1 class="hero-name">Oge Marques</h1>
 
-        <div class="hero-titles">
+        
           <p class="hero-title"><strong>Senior Scientist</strong> &middot; NVIDIA</p>
           <p class="hero-title">Professor Emeritus &middot; Florida Atlantic University</p>
-        </div>
+       
 
-        <img class="hero-photo" src="OgeMarques.png" alt="Oge Marques" />
-
+        
         <div class="hero-bio">
           <p>I am a Senior Scientist at NVIDIA, where I drive global collaborations at the intersection of accelerated computing, medical AI, and healthcare research. My technical expertise centers on the intelligent processing of visual information —- bridging computer vision, machine learning, and human visual perception -— to accelerate complex scientific and clinical workflows.</p>
           <p>Prior to joining NVIDIA, I built a quarter-century academic career, culminating in my current status as a Professor Emeritus of Computer Science and Engineering at Florida Atlantic University. During my academic tenure, I led extensive research initiatives backed by the NSF, ONR, and DoD, and mentored 27 graduate students to completion.</p>
           <p>I am a native Portuguese speaker, fluent in English and Spanish, and conversant in French. This multilingual background allows me to seamlessly navigate international research consortiums, foster cross-border scientific collaborations, and drive global AI initiatives.</p>
         </div>
-      </div>
+      
   </div>
 </section>
 
