@@ -60,12 +60,35 @@
     /* ══════════════════ HERO ══════════════════ */
     #hero { padding: 2.5rem 0 3.5rem; }
 
+    .hero-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-photo {
+      width: 180px;
+      height: 210px;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+    
+    .hero-identity {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 0.3rem;
+      align-self: flex-end;
+    }
+    
     .hero-name {
       font-family: var(--serif);
       font-optical-sizing: auto;
       font-size: clamp(2.8rem, 5.5vw, 4.2rem);
       font-weight: 600;
-      font-style: normal;
       font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
       line-height: 1.0;
       color: var(--text);
@@ -80,7 +103,7 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       display: block;
     }
     
@@ -92,31 +115,7 @@
     }
     .hero-title strong { color: var(--text); font-weight: 500; }
     
-    .hero-photo {
-      float: left;
-      width: 210px;
-      height: 240px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      border: 1px solid var(--border);
-      margin: 0.4rem 3rem 1.5rem 0;
-      shape-outside: border-box;
-    }
-    
-    @media (max-width: 640px) {
-      #hero { padding: 2rem 0 3rem; }
-      .hero-photo {
-        float: none;
-        display: block;
-        width: 130px;
-        height: 150px;
-        margin: 0 0 1.2rem 0;
-      }
-    }
-    
     .hero-bio {
-      margin-top: 1.6rem;
       font-size: 1rem;
       color: #4a4844;
       line-height: 1.85;
@@ -128,7 +127,6 @@
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-top: 2rem;
-      clear: both;
     }
     .hero-links a {
       font-size: 0.74rem;
@@ -148,7 +146,18 @@
       border-color: var(--accent);
       background: #f0f6e8;
     }
-  
+    
+    @media (max-width: 640px) {
+      #hero { padding: 2rem 0 3rem; }
+      .hero-header {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .hero-photo {
+        width: 130px;
+        height: 150px;
+      }
+    }
 
     /* ══════════════════ RESEARCH TAGS ══════════════════ */
     .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.45rem; }
@@ -318,23 +327,20 @@
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="container">
-    
-      
+    <div class="hero-header">
+      <img class="hero-photo" src="OgeMarques.png" alt="Oge Marques" />
+      <div class="hero-identity">
         <h1 class="hero-name">Oge Marques</h1>
-
-        
-          <p class="hero-title"><strong>Senior Scientist</strong> &middot; NVIDIA</p>
-          <p class="hero-title">Professor Emeritus &middot; Florida Atlantic University</p>
-       
-
-        <img class="hero-photo" src="OgeMarques.png" alt="Oge Marques" />
-    
-        <div class="hero-bio">
-          <p>I am a Senior Scientist at NVIDIA, where I drive global collaborations at the intersection of accelerated computing, medical AI, and healthcare research. My technical expertise centers on the intelligent processing of visual information —- bridging computer vision, machine learning, and human visual perception -— to accelerate complex scientific and clinical workflows.</p>
-          <p>Prior to joining NVIDIA, I built a quarter-century academic career, culminating in my current status as a Professor Emeritus of Computer Science and Engineering at Florida Atlantic University. During my academic tenure, I led extensive research initiatives backed by the NSF, ONR, and DoD, and mentored 27 graduate students to completion.</p>
-          <p>I am a native Portuguese speaker, fluent in English and Spanish, and conversant in French. This multilingual background allows me to seamlessly navigate international research consortiums, foster cross-border scientific collaborations, and drive global AI initiatives.</p>
-        </div>
-      
+        <span class="hero-phd">PhD</span>
+        <p class="hero-title"><strong>Senior Scientist</strong> &middot; NVIDIA</p>
+        <p class="hero-title">Professor Emeritus &middot; Florida Atlantic University</p>
+      </div>
+    </div>
+    <div class="hero-bio">
+      <p>I am a Senior Scientist at NVIDIA, where I drive global collaborations at the intersection of accelerated computing, medical AI, and healthcare research. My technical expertise centers on the intelligent processing of visual information —- bridging computer vision, machine learning, and human visual perception -— to accelerate complex scientific and clinical workflows.</p>
+      <p>Prior to joining NVIDIA, I built a quarter-century academic career, culminating in my current status as a Professor Emeritus of Computer Science and Engineering at Florida Atlantic University. During my academic tenure, I led extensive research initiatives backed by the NSF, ONR, and DoD, and mentored 27 graduate students to completion.</p>
+      <p>I am a native Portuguese speaker, fluent in English and Spanish, and conversant in French. This multilingual background allows me to seamlessly navigate international research consortiums, foster cross-border scientific collaborations, and drive global AI initiatives.</p>
+    </div>
   </div>
 </section>
 
