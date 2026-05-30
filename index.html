@@ -3,28 +3,461 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Oge Marques — Coming Soon</title>
+  <title>Oge Marques</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9,300;9,400;72,300;72,400;72,500&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #fafaf8;
+      --bg2:      #f3f2ee;
+      --bg3:      #eceae4;
+      --border:   #dddbd5;
+      --text:     #1a1916;
+      --muted:    #7a7770;
+      --accent:   #4a7c00;
+      --accent-l: #76b900;
+      --serif:    'Fraunces', Georgia, serif;
+      --sans:     'Instrument Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0f0f0f;
-      color: #f0f0f0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.8rem;
+    }
+
+    /* ══════════════════ HERO ══════════════════ */
+    #hero { padding: 5rem 0 4rem; }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* Name: Fraunces at optical size 72 — large, warm, distinctive */
+    .hero-name {
+      font-family: var(--serif);
+      font-variation-settings: 'opsz' 72;
+      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+      letter-spacing: -0.015em;
+    }
+
+    /* PhD on its own line, small, sans-serif, spaced caps */
+    .hero-credential {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title {
+      font-size: 0.93rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .hero-title strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      color: #4a4844;
+      line-height: 1.85;
+      max-width: 560px;
+    }
+    .hero-bio p + p { margin-top: 1rem; }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+      background: var(--bg);
+      transition: color 0.18s, border-color 0.18s, background 0.18s;
+    }
+    .hero-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: #f0f6e8;
+    }
+
+    .hero-photo {
+      width: 200px;
+      height: 230px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    /* ══════════════════ RESEARCH TAGS ══════════════════ */
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 400;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--bg2);
+      border-radius: 2px;
+      transition: color 0.18s, border-color 0.18s, background 0.18s;
+    }
+    .tag:hover {
+      color: var(--accent);
+      border-color: #a8cc6a;
+      background: #f0f6e8;
+    }
+
+    /* ══════════════════ AFFILIATIONS ══════════════════ */
+    .affil-list { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
+
+    .affil-list li {
+      display: grid;
+      grid-template-columns: 3px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .affil-list li::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 1.1em;
+      margin-top: 0.3em;
+      background: var(--accent-l);
+    }
+    .affil-main { font-size: 0.97rem; color: var(--text); font-weight: 400; }
+    .affil-sub  { font-size: 0.82rem; color: var(--muted); margin-top: 0.1rem; }
+
+    /* ══════════════════ STATS ══════════════════ */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .stat-cell { background: var(--bg2); padding: 1.5rem; text-align: center; }
+    .stat-number {
+      font-family: var(--serif);
+      font-variation-settings: 'opsz' 72;
+      font-size: 2.3rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.67rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    /* ══════════════════ AWARDS ══════════════════ */
+    .award-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .award-list li {
+      font-size: 0.92rem;
+      color: #4a4844;
+      padding-left: 1.3rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    .award-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent-l);
+    }
+
+    /* ══════════════════ FOOTER ══════════════════ */
+    footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .footer-id {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    
+    .footer-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    
+    .footer-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    
+    .footer-icons {
+      display: flex;
+      gap: 0.6rem;
+    }
+    
+    .footer-icons a {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--text);
+      color: var(--bg);
+      text-decoration: none;
+      transition: background 0.18s, transform 0.18s;
+    }
+    
+    .footer-icons a:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    .footer-icons svg {
+      width: 17px;
+      height: 17px;
+    }
+    
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--muted);
       text-align: center;
     }
-    h1 { font-size: 2.5rem; font-weight: 300; letter-spacing: 0.05em; }
-    p  { margin-top: 1rem; color: #888; font-size: 1rem; }
-    a  { color: #888; text-decoration: none; border-bottom: 1px solid #444; }
+
+    /* ── FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-inner { animation: fadeUp 0.65s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-photo-wrap { order: -1; }
+      .hero-photo { width: 130px; height: 150px; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
-  <div>
-    <h1>Oge Marques</h1>
-    <p>Something new is coming. Stay tuned.</p>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <h1 class="hero-name">Oge Marques</h1>
+
+        <div class="hero-titles">
+          <p class="hero-title"><strong>Senior Scientist</strong> &middot; NVIDIA</p>
+          <p class="hero-title">Professor Emeritus &middot; Florida Atlantic University</p>
+        </div>
+
+        <div class="hero-bio">
+          <p>I am a Senior Scientist at NVIDIA, where I drive global collaborations at the intersection of accelerated computing, medical AI, and healthcare research. My technical expertise centers on the intelligent processing of visual information —- bridging computer vision, machine learning, and human visual perception -— to accelerate complex scientific and clinical workflows.</p>
+          <p>Prior to joining NVIDIA, I built a quarter-century academic career, culminating in my current status as a Professor Emeritus of Computer Science and Engineering at Florida Atlantic University. During my academic tenure, I led extensive research initiatives backed by the NSF, ONR, and DoD, and mentored 27 graduate students to completion.</p>
+          <p>I am a native Portuguese speaker, fluent in English and Spanish, and conversant in French. This multilingual background allows me to seamlessly navigate international research consortiums, foster cross-border scientific collaborations, and drive global AI initiatives.</p>
+        </div>
+      </div>
+
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="OgeMarques.png" alt="Oge Marques" />
+      </div>
+    </div>
   </div>
+</section>
+
+<!-- ══ RESEARCH ══ -->
+<section id="research">
+  <div class="container">
+    <p class="section-label">Research Interests</p>
+    <div class="tag-cloud">
+      <span class="tag">Computer Vision</span>
+      <span class="tag">Medical Image Analysis</span>
+      <span class="tag">Deep Learning</span>
+      <span class="tag">Artificial Intelligence</span>
+      <span class="tag">AI for Radiology</span>
+      <span class="tag">Explainable AI</span>
+      <span class="tag">Visual Perception</span>
+      <span class="tag">Image Retrieval</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Accelerated Computing</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AFFILIATIONS ══ -->
+<section id="affiliations">
+  <div class="container">
+    <p class="section-label">Current Positions &amp; Affiliations</p>
+    <ul class="affil-list">
+      <li>
+        <div>
+          <div class="affil-main">Senior Scientist, NVIDIA AI Technology Centre</div>
+          <div class="affil-sub">NVIDIA &middot; 2024&ndash;present</div>
+        </div>
+      </li>
+      <li>
+        <div>
+          <div class="affil-main">Professor Emeritus, Dept. of Electrical Engineering and Computer Science</div>
+          <div class="affil-sub">Florida Atlantic University &middot; 2024&ndash;present</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ IMPACT ══ -->
+<section id="impact">
+  <div class="container">
+    <p class="section-label">Scholarly Impact</p>
+    <div class="stats-row">
+      <div class="stat-cell">
+        <span class="stat-number">6,700+</span>
+        <span class="stat-label">Citations</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number">39</span>
+        <span class="stat-label">h-index</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number">13</span>
+        <span class="stat-label">Books</span>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-number">150+</span>
+        <span class="stat-label">Publications</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HONOURS ══ -->
+<section id="honours">
+  <div class="container">
+    <p class="section-label">Selected Recognition, Honors &amp; Memberships</p>
+    <ul class="award-list">
+      <li>Certified Instructor, Generative AI and Diffusion Models &amp; Fundamentals of Deep Learning &mdash; NVIDIA DLI (2022&ndash;present)</li>
+      <li>AAAS Leshner Leadership Institute Public Engagement Fellow (2019&ndash;present)</li>
+      <li>Senior Member, IEEE (2009&ndash;present)</li>
+      <li>Senior Member, ACM (2009&ndash;present)</li>
+      <li>Tau Beta Pi Eminent Engineer (2009&ndash;present)</li>
+      <li>Fellow &amp; Mentor &mdash; AIM-AHEAD Consortium, NIH (2022&ndash;2024)</li>
+      <li>University Ambassador &mdash; NVIDIA Deep Learning Institute (2022&ndash;2024)</li>
+      <li>Sigma Xi Distinguished Lecturer (2020&ndash;2022)</li>
+      <li>ACM Distinguished Speaker (2014&ndash;2020)</li>
+      <li>Outstanding Engineering Achievement Merit Award &mdash; The Engineers&rsquo; Council, West Palm Beach, FL (2021)</li>
+      <li>College of Engineering and Computer Science Senior Faculty Teaching Award, FAU (2020)</li>
+      <li>John J. Guarrera Engineering Educator of the Year Award &mdash; The Engineers&rsquo; Council (2019)</li>
+      <li>Excellence and Innovation in Undergraduate Teaching Award &mdash; Florida Atlantic University (2018, 2011, 2004)</li>
+      <li>Outstanding Mid-Career Teaching Award &mdash; ASEE Southeastern Section (2011)</li>
+</ul>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-id">
+        <span class="footer-name">Oge Marques</span>
+        <span class="footer-role">Senior Scientist &middot; NVIDIA &nbsp;|&nbsp; Professor Emeritus &middot; FAU</span>
+      </div>
+      <div class="footer-icons">
+
+        <a href="https://scholar.google.com/citations?user=ZgWULzYAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5L0 9h3v9h7v-5h4v5h7V9h3L12 .5zm0 2.3l7.6 5.7H4.4L12 2.8zM5 10.5h3v4H5v-4zm11 0h3v4h-3v-4z"/><circle cx="12" cy="19" r="3"/></svg>
+        </a>
+
+        <a href="https://orcid.org/0000-0003-4321-2719" target="_blank" rel="noopener" aria-label="ORCID">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.516.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.9-1.303 3.9-3.722 0-2.216-1.313-3.722-3.853-3.722h-2.344z"/></svg>
+        </a>
+
+        <a href="https://www.linkedin.com/in/ogemarques" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+
+      </div>
+    </div>
+    <p class="footer-copy">&copy; <span id="yr"></span> Oge Marques</p>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
